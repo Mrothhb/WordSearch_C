@@ -2,14 +2,14 @@
  * Filename: findCommand.c
  * Author: Matt Roth
  * UserId: cs30xgs
- * Date: May 1, 2019
+ * Date: May 15th, 2019
  * Sources of help: Textbook, cse 30 website, lecture notes, discussion notes.
  */
 
 #include <stdio.h>
 #include <string.h>
 #include "pa2.h"
-
+#include "pa3.h"
 /*
  * Function Name: findCommand()
  * Function Prototype:  int findCommand( const char * cmdString, 

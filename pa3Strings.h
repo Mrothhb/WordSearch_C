@@ -1,7 +1,7 @@
 /*
  * Filename: pa3Strings.h
- * Author: TODO
- * UserId: TODO
+ * Author: Matt Roth
+ * UserId: cs30xgs
  * Date: TODO
  * Sources of help: Given.
  */

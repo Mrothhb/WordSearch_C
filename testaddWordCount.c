@@ -1,14 +1,13 @@
 /*
  * Filename: testaddWordCount.c
- * Author: TODO
- * UserId: TODO
+ * Author: Matt Roth
+ * UserId: cs30xgs
  * Date: TODO
- * Sources of help: TODO
+ * Sources of help: Textbook, cse 30 website, lecture notes, discussion notes.
  */
 
 #include <stdio.h>
 #include <string.h>
-
 #include "pa3.h"
 #include "test.h"
 
@@ -61,14 +60,66 @@ void testaddWordCount() {
   TEST( strncmp( slot.wordDataPtr[0].word, word, MAX_WORD_SIZE ) == 0 );
   TEST( slot.wordDataPtr[0].counts[decadeIdx] == count );
 
-  /*
-   * TODO: YOU MUST WRITE MORE TEST CASES FOR FULL POINTS!
-   *
-   * Some things to think about are error cases, extreme cases, normal cases,
-   * abnormal cases, etc.
-   */
-}
+  word = "apple";
+  decade = 1830;
+  decadeIdx = (decade - MIN_DECADE) / YEARS_IN_DECADE;
+  count = 300;
 
+  TEST( addWordCount( &slot, word, decade, count ) == 0 );  
+  TEST( slot.numWords == 2 );
+  TEST( strncmp( slot.wordDataPtr[0].word, word, MAX_WORD_SIZE ) == 0 );
+  TEST( slot.wordDataPtr[0].counts[decadeIdx] == count );
+
+  word = "apple";
+  decade = 1850;
+  decadeIdx = (decade - MIN_DECADE) / YEARS_IN_DECADE;
+  count = 9300;
+
+  TEST( addWordCount( &slot, word, decade, count ) == 0 );  
+  TEST( slot.numWords == 2 );
+  TEST( strncmp( slot.wordDataPtr[0].word, word, MAX_WORD_SIZE ) == 0 );
+  TEST( slot.wordDataPtr[0].counts[decadeIdx] == count );
+
+  word = "zesty";
+  decade = 2000;
+  decadeIdx = (decade - MIN_DECADE) / YEARS_IN_DECADE;
+  count = 100;
+
+  TEST( addWordCount( &slot, word, decade, count ) == 0 );  
+  TEST( slot.numWords == 3 );
+  TEST( strncmp( slot.wordDataPtr[2].word, word, MAX_WORD_SIZE ) == 0 );
+  TEST( slot.wordDataPtr[2].counts[decadeIdx] == count );
+  
+  word = "Apple";
+  decade = 1830;
+  decadeIdx = (decade - MIN_DECADE) / YEARS_IN_DECADE;
+  count = 300;
+
+  TEST( addWordCount( &slot, word, decade, count ) == 0 );  
+  TEST( slot.numWords == 4 );
+  TEST( strncmp( slot.wordDataPtr[0].word, word, MAX_WORD_SIZE ) == 0 );
+  TEST( slot.wordDataPtr[0].counts[decadeIdx] == count );
+
+  word = "1234";
+  decade = 1800;
+  decadeIdx = (decade - MIN_DECADE) / YEARS_IN_DECADE;
+  count = 1234;
+
+  TEST( addWordCount( &slot, word, decade, count ) == 0 );  
+  TEST( slot.numWords == 5 );
+  TEST( strncmp( slot.wordDataPtr[0].word, word, MAX_WORD_SIZE ) == 0 );
+  TEST( slot.wordDataPtr[0].counts[decadeIdx] == count );
+
+  word = "wang";
+  decade = 20;
+  decadeIdx = (decade - MIN_DECADE) / YEARS_IN_DECADE;
+  count = 1234;
+
+  TEST( addWordCount( &slot, word, decade, count ) == 0 );  
+  TEST( slot.numWords == 6 );
+  TEST( strncmp( slot.wordDataPtr[1].word, word, MAX_WORD_SIZE ) == 0 );
+  TEST( slot.wordDataPtr[1].counts[0] == 0 );
+}
 
 int main( void ) {
 

@@ -33,7 +33,7 @@ int addWordCount( tableSlot_t * slot, const char * word, unsigned int decade,
 
   // Create a wordData_t struct pointer for bsearch   
   wordData_t * found;
-  int index; 
+  unsigned int index; 
 
   // Create a wordData_T on the stack 
   wordData_t wordData;

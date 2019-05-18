@@ -50,6 +50,7 @@
 #define MAX_WORD_SIZE 48
 #define DECADE_BASE 10
 #define COUNT_BASE 10
+#define READ_ONLY "r"
 
 /* Hashing */
 #define HASH_START_VAL 13
@@ -59,6 +60,7 @@
 #define PLOT_ROWS 26
 #define PLOT_COLS 44
 #define PERCENTAGE_FACTOR 100
+#define TRUNCATE 100
 #define ROW_RESOLUTION 4
 #define COL_SEPARATION 2
 #define PLOT_SPACE_CHAR ' '
@@ -70,6 +72,8 @@
 #define PLOT 0
 #define DATA 1
 #define HELP 2
+#define INVALID_ENTRY -1
+#define INSIDE_INTERVAL 1
 
 #define PRINT_PROMPT (shouldPrompt() ? printf(STR_COMMAND_PROMPT) : 0)
 

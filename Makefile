@@ -117,7 +117,7 @@ OPT_EXT = -opt
 
 # Optimized object file rules.
 %$(OPT_EXT).o: %.s
-	@echo "Assembling each assembly source file separately ..."
+	@echo "Assembling each assembly source file separtely ..."
 	$(ASM) $(OPT_ASM_FLAGS) -o $(<:.s=$(OPT_EXT).o) $<
 	@echo ""
 

@@ -19,14 +19,14 @@
 @ Allocate space on the stack for local variables 
 	
 	@ Local variables 	
-	.equ	LOCAL_SPACE, 4		@ allocate space for the local variables
+	.equ	LOCAL_SPACE, 8		@ allocate space for the local variables
 	
 	@ Formal parameters
-	.equ	PARAM_SPACE, 12		@ allocate space for the formal params.
+	.equ	PARAM_SPACE, 8		@ allocate space for the formal params.
 	
 	.equ	INDEX_OFFSET, -8	@ allocate space on stack for the index
 	.equ	WORD_STR_OFFSET, -12	@ allocate space for the wordStr param
-	.equ	NUM_SLOTS_OFFSET, -16
+	.equ	NUM_SLOTS_OFFSET, -16	@ allocate space for numSlots
 	.text				@ Switch to Text segment 
 	.align 2			@ Align on evenly divisible by 4 byte 
 					@ address;
@@ -45,7 +45,11 @@
  *
  * Registers used:
  *	r0 - arg 1 -- the parametr wordStr.
- *	r1 - arg 2 -- the parameter numSlots. 
+ *	r1 - arg 2 -- the parameter numSlots.
+ * Stack Variables:
+ *	wordStr   --  the string to compute hash and find index
+ *	index     --  the index to calculate
+ *	numSlots  --  the number of slots in the table 
  */
 
 findSlotIndex:

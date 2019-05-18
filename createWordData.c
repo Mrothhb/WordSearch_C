@@ -30,7 +30,7 @@
 void createWordData( wordData_t * wordData, const char * wordStr,
     unsigned int decade, unsigned int count) {
   int i;
-  int index;
+  unsigned int index;
   
   // If void pointer or wordStr is Null return 
   if( !wordData || !wordStr ) {
@@ -60,6 +60,6 @@ void createWordData( wordData_t * wordData, const char * wordStr,
   }
   
   // Set the hashValue to the computed hash value from computeHash 
-  wordData->hashValue = computeHash( wordStr );
+  wordData->hashValue = computeHash( wordData->word );
 
 }

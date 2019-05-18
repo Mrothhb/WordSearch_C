@@ -2,7 +2,7 @@
  * Filename: testaddWordCount.c
  * Author: Matt Roth
  * UserId: cs30xgs
- * Date: TODO
+ * Date: May 17th, 2019
  * Sources of help: Textbook, cse 30 website, lecture notes, discussion notes.
  */
 
@@ -111,7 +111,7 @@ void testaddWordCount() {
   TEST( slot.wordDataPtr[0].counts[decadeIdx] == count );
 
   word = "wang";
-  decade = 20;
+  decade = 0;
   decadeIdx = (decade - MIN_DECADE) / YEARS_IN_DECADE;
   count = 1234;
 

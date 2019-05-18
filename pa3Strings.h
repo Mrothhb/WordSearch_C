@@ -2,7 +2,7 @@
  * Filename: pa3Strings.h
  * Author: Matt Roth
  * UserId: cs30xgs
- * Date: TODO
+ * Date: May 17th 2019
  * Sources of help: Given.
  */
 #ifndef PA3_STRINGS_H

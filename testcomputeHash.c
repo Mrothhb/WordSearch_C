@@ -55,9 +55,10 @@ void testcomputeHash() {
   const char * str8 = "                        ";
 
   
-  valid_s = computeHash( str );
-  valid_c = computeHash_c( str );
-  TEST( valid_s == 475 );   // hardcode the hash value 
+  valid_s = computeHash( "apple" );
+  valid_c = computeHash_c( "apple" );
+  TEST( valid_s == valid_c );   // hardcode the hash value 
+  printf("%ld\n\n\n", valid_s);
 
   valid_s = computeHash( str2 );
   valid_c = computeHash_c( str2 );
@@ -95,6 +96,8 @@ void testcomputeHash() {
   valid_s = computeHash( "" );
   valid_c = computeHash_c( "");
   TEST( valid_s == valid_c );
+
+  TEST( computeHash("hello") == computeHash_c("hello"));
  }
 
 int main( void ) {

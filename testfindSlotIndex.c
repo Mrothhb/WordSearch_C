@@ -2,7 +2,7 @@
  * Filename: testfindSlotIndex.c
  * Author: Matt Roth
  * UserId: cs30xgs
- * Date: TODO
+ * Date: May 17th, 2019
  * Sources of Help: Lecture notes, cse 30 website, texbook. 
  */ 
 
@@ -86,7 +86,6 @@ void testfindSlotIndex() {
   hash = computeHash( "hello" );
   rem = myURem( hash, test_negative );
   slotIndex = findSlotIndex("hello", test_negative);
-  printf("slot index: %d \n\n\n ", slotIndex);
   TEST( slotIndex == rem );
 
 }

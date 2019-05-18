@@ -8,7 +8,6 @@
 
 #include <stdio.h>
 #include <string.h>
-#include "pa2.h"
 #include "pa3.h"
 /*
  * Function Name: findCommand()

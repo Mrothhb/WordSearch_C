@@ -2,7 +2,7 @@
  * Filename: testbuildWordTable.c
  * Author: Matt Roth
  * UserId: cs30xgs
- * Date: May 17th, 2019
+ * Date: May 22nd, 2019
  * Sources of help: Textbook, cse 30 website, lecture notes, discussion notes.
  */
 
@@ -16,7 +16,7 @@
  */
 void testbuildWordTable() {
 
-  int i;
+  //int i;
 
   wordTable_t table;
   tableSlot_t slot;
@@ -30,10 +30,13 @@ void testbuildWordTable() {
 
   buildWordTable( &table, size );    
 
-  for( i = 0; i < 26; i++){ 
+  //for( i = 0; i < 26; i++){ 
 
-    printf( "%s \n\n", slot.wordDataPtr[i].word);
-  } 
+  //  printf( "%s \n\n", slot.wordDataPtr[i].word);
+  //}
+
+  printTable( &table );
+  
 }
 
 int main( void ) {

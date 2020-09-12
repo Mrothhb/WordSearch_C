@@ -2,7 +2,7 @@
  * Filename: myURem.s
  * Author: Matt Roth 
  * UserId: cs30xgs
- * Date: May 15th, 2019
+ * Date: May 22nd, 2019
  * Sources of Help: Textbook, lecture notes, and discussion section notes.
  *
  */
@@ -40,7 +40,6 @@
  * Stack variables:
  *	None.
  */
-
 myURem:
 @ Standard prologue
  	push	{fp, lr}		@ Save registers: fp, lr

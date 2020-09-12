@@ -2,7 +2,7 @@
  * Filename: findCommand.c
  * Author: Matt Roth
  * UserId: cs30xgs
- * Date: May 15th, 2019
+ * Date: May 22nd, 2019
  * Sources of help: Textbook, cse 30 website, lecture notes, discussion notes.
  */
 
@@ -23,7 +23,6 @@
  *                    
  * Return Value: index of string or, -1,     
  */
-
 int findCommand( const char * cmdString, const char * commands[] ) {
 
   int i = 0;
@@ -31,6 +30,7 @@ int findCommand( const char * cmdString, const char * commands[] ) {
 
   // Null check to see if the parameters are NULL value 
   if( cmdString == NULL || commands == NULL ) {
+
     return found = -1;
   }
 
@@ -42,6 +42,7 @@ int findCommand( const char * cmdString, const char * commands[] ) {
     
     // The string was found and return the index of the string 
     if( found == 0 ) {
+
       return i;
     }
     

@@ -2,7 +2,7 @@
  * Filename: buildPlot.c
  * Author: Matt Roth
  * UserId: cs30xgs
- * Date: TODO
+ * Date: May 22nd, 2019
  * Sources of help: Textbook, cse 30 website, lecture notes, discussion notes.
  */
 
@@ -26,7 +26,6 @@
  *                    
  * Return Value: None.     
  */
-
 void buildPlot( char plotArr[PLOT_ROWS][PLOT_COLS], const wordData_t * word, 
     unsigned int minCount, unsigned int maxCount ) {
 
@@ -54,25 +53,28 @@ void buildPlot( char plotArr[PLOT_ROWS][PLOT_COLS], const wordData_t * word,
 
       // Check if the column is an odd or even index
       else if((j % COL_SEPARATION) != 0 ) {
-
-        // Calculate the row index of the percentage from word count
+        
+        // Find the row index from the calculated percentage 
         countIDX = j / COL_SEPARATION;
         truncCount = word->counts[countIDX] / TRUNCATE;
         percent = (( truncCount - truncMin ) * TRUNCATE ) 
           / (truncMax - truncMin); 
-        row_index = ( TRUNCATE - percent ) / ROW_RESOLUTION;
+        row_index =  PLOT_ROWS - 1 - percent  / ROW_RESOLUTION;
 
         // Determine if the index cooresponds to a count from the word
         if( i == row_index ) {
+
           plotArr[row_index][j] = PLOT_LINE_CHAR;
         }
         else {
+          
+          // initialize space chars everywhere else
           plotArr[i][j] = PLOT_SPACE_CHAR;
         } 
       }
 
-      // Otherwise initialize with space chars 
       else {
+
         plotArr[i][j] = PLOT_SPACE_CHAR;
       }
     }

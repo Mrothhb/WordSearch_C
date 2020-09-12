@@ -3,7 +3,7 @@
  * Filename: 
  * Author: Matt Roth
  * UserId: cs30xgs
- * Date: May 15th, 2019 
+ * Date: May 22nd, 2019 
  * Sources of help: Textbook, cse 30 website, lecture notes, discussion notes.
  */
 
@@ -49,7 +49,7 @@ void testcomputeHash() {
   const char * str3 = "";
   const char * str4 = " 1 s e f^ %!";
   const char * str5 = 
-  "efoigrgrhgjsklhgkjrlhgskdhgskrhgkrshgskhgkghsdkhgsdkjrhgdklifguj jsenfvnkla";
+  "efoigrgrhgjsklhgkjrlhgskdhgskrhgkrshgskhgkghsdkhgsdkjrhgdklifguj jsenfvnkl";
   const char * str6 = NULL;
   const char * str7 = '\0';
   const char * str8 = "                        ";

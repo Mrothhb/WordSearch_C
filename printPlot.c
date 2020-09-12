@@ -2,7 +2,7 @@
  * Filename: printPlot.c
  * Author: Matt Roth
  * UserId: cs30xgs
- * Date: TODO
+ * Date: May 22nd, 2019
  * Sources of help: Textbook, cse 30 website, lecture notes, discussion notes.
  */
 #include <stdio.h>

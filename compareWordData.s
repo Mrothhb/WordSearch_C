@@ -2,7 +2,7 @@
  * Filename: compareWordData.s
  * Author: Matt Roth 
  * UserId: cs30xgs
- * Date: May 15th, 2019
+ * Date: May 22nd, 2019
  * Sources of Help: Textbook, lecture notes, and discussion section notes.
  *
  */
@@ -47,7 +47,6 @@
  * Stack variables:
  *	return_value	-- the return value from the comparison of the structs
  *	str_cmp		-- the return value from the strncmp 
- *	
  *
  */
 

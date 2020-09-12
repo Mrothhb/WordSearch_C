@@ -2,7 +2,7 @@
  * Filename: createWordData.c
  * Author: Matt Roth
  * UserId: cs30xgs
- * Date: May 15th, 2019
+ * Date: May 22nd, 2019
  * Sources of help: Textbook, cse 30 website, lecture notes, discussion notes.
  */
 
@@ -26,9 +26,9 @@
  *                    
  * Return Value: None.     
  */
-
 void createWordData( wordData_t * wordData, const char * wordStr,
     unsigned int decade, unsigned int count) {
+
   int i;
   unsigned int index;
   

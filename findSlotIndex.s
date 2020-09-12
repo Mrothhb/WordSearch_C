@@ -2,7 +2,7 @@
  * Filename: findSlotIndex.s
  * Author: Matt Roth 
  * UserId: cs30xgs
- * Date: May 15th, 2019
+ * Date: May 22nd, 2019
  * Sources of Help: Textbook, lecture notes, and discussion section notes.
  *
  */
@@ -51,7 +51,6 @@
  *	index     --  the index to calculate
  *	numSlots  --  the number of slots in the table 
  */
-
 findSlotIndex:
 @ Standard prologue
  	push	{fp, lr}			@ Save registers: fp, lr

@@ -2,7 +2,7 @@
  * Filename: buildWordTable.c
  * Author: Matt Roth
  * UserId: cs30xgs
- * Date: TODO
+ * Date: May 22, 2019
  * Sources of help: Textbook, cse 30 website, lecture notes, discussion notes.
  */
 #include <stdio.h>
@@ -35,8 +35,7 @@ int buildWordTable( wordTable_t * table, unsigned int size ) {
   unsigned int line_num = 1;    // Tracking the line number
   int success = 0;
   unsigned int index = 0;
-  char i;                       // The letter to increment in the for loop
-
+  char i;                      
 
   // Iterate through all the letters in the directory and open each file 
   for( i = FIRST_LETTER; i <= LAST_LETTER; i++ ) {
@@ -44,7 +43,7 @@ int buildWordTable( wordTable_t * table, unsigned int size ) {
     // Set the letter to the index of i for the first file to open
     letter = i;
     line_num = 1;
-    snprintf(path, BUFSIZ, STR_PATH_JOIN, DEFAULT_DATA_DIR, letter, size );
+    snprintf( path, BUFSIZ, STR_PATH_JOIN, DEFAULT_DATA_DIR, letter, size );
     errno = 0;
 
     // Open the file from the generated path 
@@ -53,13 +52,13 @@ int buildWordTable( wordTable_t * table, unsigned int size ) {
     // Check if the file opening was successful 
     if( errno != 0 || fp == NULL ) {
 
-      fprintf(stderr, STR_ERR_OPENING_FILE, path, strerror(errno) );
+      fprintf( stderr, STR_ERR_OPENING_FILE, path, strerror(errno) );
       continue;
     }
-
+    
     // Add each word and its data from the file to the table 
     while( fgets(buffer, BUFSIZ, fp) != NULL ) {
-
+      
       char * pos = strchr( buffer, NEWLINE_CHAR );
 
       if( pos != NULL ) {
@@ -77,20 +76,20 @@ int buildWordTable( wordTable_t * table, unsigned int size ) {
         fprintf( stderr, STR_ERR_PARSING_LINE, line_num, path, buffer ); 
         continue;
       }
-
+        
       char * endPtr;
       errno = 0;
 
       // Convert the parsed strings from file into usigned longs 
       unsigned int decade = strtoul( decadeStr, &endPtr, DECADE_BASE );
 
-      // Check if the conversion to unsigned long was unsuccesful 
       if( errno != 0 || *endPtr != '\0' ) {
 
         fprintf( stderr, STR_ERR_PARSING_LINE, line_num, path, buffer); 
         continue;
       }
-
+      
+      // Convert the count from a string to an int 
       unsigned int count = strtoul( countStr, &endPtr, COUNT_BASE );
 
       // Check if the count is larger than max size
@@ -108,22 +107,21 @@ int buildWordTable( wordTable_t * table, unsigned int size ) {
       // Store the data in the table 
       index = findSlotIndex( word, table->numSlots );
 
-      success = addWordCount( &table->slotPtr[index], word, decade, count );
-
+      success = addWordCount( &(table->slotPtr[index]), word, decade, count );
+    
       // Check if adding the wordData was successful
       if( success == -1 ) {
+
         fclose(fp);
         return -1;
       }
 
-      // Increment the line number 
+      // Increment the line number and close the file 
       ++line_num;
     }
 
     fclose(fp);
   }
 
-
   return 0;
 }
-

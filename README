@@ -1,0 +1,223 @@
+/*
+ * Filename: README
+ * Author: Matt Roth 
+ * Userid: cs30xgs
+ * Date: May 22nd, 2019
+ * Sources of help: Harris Textbook, lecture notes, discussion notes, website
+ */
+
+------------------------------------------------------------[  DESCRIPTION  ]--
+
+This program can be used to view the frequency that a word is used across 
+decades. Data for these words is collected in a public directory. When the 
+program reads this data, it stores it in a large table with a number of slots, 
+which can be given by the specific commands at the command line.
+The program may take arguments from the command line, or no arguments from the 
+command line, to determine the size of the table and the size of data files to 
+read in from the public directory. To see a list of commands to use within the 
+program the user can type "help" in the terminal at any point
+during the running program. Using Cntrl D will exit the progam at any time. 
+
+------------------------------------------------------------[  COMPILATION  ]--
+
+Compilation is made easy through the use of the Make utility. A file included
+with the source called Makefile specifies how to derive the target program.
+
+To compile the program, simply do the following in a Linux terminal:
+
+	$ make 
+
+If generating new .o files for execution use the following command:
+
+	$ make new 
+
+	or
+
+	$ make clean 
+
+To run the program after make has finished, type the following:
+
+	$ ./pa3 ( no arguments with default size and numSlots )
+	$ ./pa3 -h ( display the help menu )
+	$ ./pa3 -s ( set the size of the data file to read in  )
+	$ ./pa3 -n ( set the number of slots in the table )
+
+------------------------------------------------------------[ SAMPLE OUTPUT ]--
+
+An example of normal output... (on stdout)
+
+$ ./pa3
+
+Commands:
+        plot    word -- Display a plot showing a word's popularity over time.
+        data    word -- List word occurrences by decade for a word.
+        help         -- Display this message.
+
+>>> plot me
+
+ ( 137750072) 100% |                                         x
+               96% |
+               92% |
+               88% |
+               84% |
+               80% |
+               76% |
+               72% |
+               68% |
+               64% |
+               60% |
+               56% |
+               52% |
+               48% |
+               44% |                                       x
+               40% |
+               36% |
+               32% |
+               28% |
+               24% |                                     x
+               20% |
+               16% |                                   x
+               12% |                                 x
+                8% |                     x         x
+                4% |                 x x   x x x x
+ (   1246834)   0% | x x x x x x x x
+                   --------------------------------------------
+                     1   1   1   1   1   1   1   1   1   1   2
+                     8   8   8   8   8   9   9   9   9   9   0
+                     0   2   4   6   8   0   2   4   6   8   0
+                     0   0   0   0   0   0   0   0   0   0   0
+
+>>>
+
+
+Examples of abnormal output... (on stderr)
+
+$ ./pa3 -s225 -n24
+
+        size (225) is not within {1, 5, 10, 50, 100, 500}
+
+$ ./pa3 -invalid flag
+./pa3: invalid option -- 'i'
+
+        numSlots 'valid' is not a valid integer in base 10
+
+$ ./pa3
+
+Commands:
+        plot    word -- Display a plot showing a word's popularity over time.
+        data    word -- List word occurrences by decade for a word.
+        help         -- Display this message.
+
+>>> plot
+
+        Missing argument(s) for command.
+
+>>>
+	
+------------------------------------------------------------[    TESTING    ]--
+
+I tested my program by comparing its output against the pa3test solution 
+contained in the public directory.
+
+Some specific test cases I tried on the executable:
+
+  * Out of range size for flag -s
+  * invalid amount of arguments
+  * invalid size of arguments
+  * invalid type of arguments
+  * Inputting too few arguments or too many arguments
+  * Large or small size input 
+  * words that don't exist 
+ 
+------------------------------------------------------------[   QUESTIONS   ]--
+[Unix]
+
+1.  Q: You are trying to open your pa3Globals.c file. You have already typed 
+       "vim pa3G". Which singlekey can you press to autocomplete the command to 
+       "vim pa3Globals.c"?
+
+    A: Tab
+   
+2.  Q: What is the command to search for tabs in all the C files in your 
+       current directory? Your command should print out the line numbers of the 
+       tabs as well.
+
+    A: grep -n '\t' *.c
+
+[C]
+
+3.  Q: Suppose that we define the variable wordDataPtr like so: 
+       wordData_t * wordDataPtr = calloc( 9, sizeof( wordData_t ));
+       (a) What is the value of sizeof(wordDataPtr) and (b) Why? 
+
+    A: (a) 4.
+       (b) sizeof is returning the amount of memory allocated to the data type
+       	   wordData_t, The struct for wordData_t is size allocated similar to 
+	   an int/long/ptr, and these data types hold 32 bits which is 4 bytes.
+	 
+4.  Q: Give two different situations in which dynamic memory allocation (use
+       of malloc/calloc/realloc) would be necessary.   	 
+     
+    A:  Situation 1: when needing to allocate space in memory and the space 
+    	needed may change depending on the situation, having dynamically 
+	allocated memory for a specific size from the heap would be ideal in 
+	this situation.
+
+	Situation 2: The amount of memory needed has been determined and we 
+	would like to increase the amount and extend the 
+	memory to store more data, with realloc() such as was done during the 
+	addWordCount() function call with specified amount of memory needed
+	during the program execution.
+
+5.  Q: 	(a) What is the difference between the & and * operator? 
+        (b) Complete the code below (provide code for the TODO and the blanks) 
+	such that foobar swaps the values of x and what y points to in main:
+	
+	void foobar( int * a, int * b ) { 
+	  int temp = *a;
+	  *a = *b;
+	  *b = tmp;	
+	}
+
+	int main ( int argc, char * argv [] ) {
+	
+	  int x = 420;
+	  int * y = malloc( sizeof(int) );
+	  *y = 240;
+	  foobar( &x, y );
+	  free( y );
+	  return 0;
+
+	}
+
+    A: (a) the & operator is accessing a memory address, and the * is 
+    	   dereferencing a pointer.
+       (b) see above.    
+
+[Vim]
+
+6.  Q: What is the command to turn a lowercase character into an uppercase 
+       character and vice versa?
+
+    A: select the text desired, and in command mode press 'u' to convert all 
+       text into lowercase, and 'U' to convert all text into upper case.
+
+7.  Q: What is the command to repeat the last executed command? 
+   
+    A: Press '.' in command mode to repeat the last executed command.
+
+[Academic Integrity]
+
+8. Q: There is an hour before the deadline and you've just submitted your 
+      working solution. Your friend messages you online and tells you that one 
+      of their functions isn't working properly. They ask you to send them a 
+      portion of your code. What are three actions you could take to act with 
+      integrity?
+
+   A: One action to take would be to ask questions about their thought process 
+      behind the design of their fucntion and then help them understand why 
+      their function isn't working properly.
+      Another action would be to indicate where in the notes and textbook they
+      might find a method to help solve their problem. And third action to take
+      would be to just tell them to keep trying and dont give up yet, and sorry
+      I couldnt be any more help. 

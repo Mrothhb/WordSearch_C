@@ -2,7 +2,7 @@
  * Filename: testaddWordCount.c
  * Author: Matt Roth
  * UserId: cs30xgs
- * Date: May 17th, 2019
+ * Date: May 22nd, 2019
  * Sources of help: Textbook, cse 30 website, lecture notes, discussion notes.
  */
 

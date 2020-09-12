@@ -2,7 +2,7 @@
  * Filename: addWordCount.c
  * Author: Matt Roth
  * UserId: cs30xgs
- * Date: May 15th, 2019
+ * Date: May 22nd, 2019
  * Sources of help: Textbook, cse 30 website, lecture notes, discussion notes.
  */
 #include <stdlib.h>
@@ -27,7 +27,6 @@
  *                    
  * Return Value: 0 or -1 for error.     
  */
-
 int addWordCount( tableSlot_t * slot, const char * word, unsigned int decade, 
     unsigned int count ) {
 
@@ -38,10 +37,9 @@ int addWordCount( tableSlot_t * slot, const char * word, unsigned int decade,
   // Create a wordData_T on the stack 
   wordData_t wordData;
 
-  // Calculate the index of the decade 
+  // Calculate the index of the decade and poplulate the wordData_t  
   index = ( decade - MIN_DECADE ) / YEARS_IN_DECADE;
 
-  // Populate the wordData_t with the word, decade and count
   createWordData( &wordData, word, decade, count );
 
   // Use a binary search to find the wordData 
@@ -54,34 +52,32 @@ int addWordCount( tableSlot_t * slot, const char * word, unsigned int decade,
     found->counts[index] += count;
     return 0;
   }
+
   // The wordData was not found, create a new one 
   else if( found == NULL ) {
     
     // Allocate additional space in memory to insert the new wordData_t struct
     wordData_t * returnPtr = realloc (slot->wordDataPtr, (slot->numWords + 1)
                                                     * sizeof(wordData_t));
-
     //  Check if the realloc was unsuccesful                                   
     if(returnPtr == NULL) {
       
       // Free the memory for the pointer in the slot  
       free( slot->wordDataPtr );
       slot->wordDataPtr = NULL;
-      // Print the error message that the memory allocation was unsuccesful 
       fprintf( stderr, STR_ERR_MEM_EXCEEDED );
       return -1;
     }
     
     // Insert the wordData at the new segment of allocated memory
     returnPtr[slot->numWords] = wordData;
-    // Increment the numWords variable in slot 
     slot->numWords = slot->numWords + 1;
-    // Set the wordDataPtr now to the realloc returnPtr
+
+    // Set the wordDataPtr now to the realloc returnPtr and sort the array 
     slot->wordDataPtr = returnPtr;
-    // Sort the array 
     qsort( slot->wordDataPtr, slot->numWords, sizeof(wordData_t), 
             compareWordData );
    }
-   // Return success
+
    return 0;
 }
